@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  # servicio 1: La base de datos
+  serv-bd-ejemplo:
+    image: mariadb:10.3
+    container_name: serv-bd-ejemplo
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1234
+    ports:
+      - 6033:3306
+    volumes:
+      - ./MariaDB/schemas:/var/lib/mysql
+    networks:
+      - red_ejemplo  
+  # servicio 2: La instalación de apache
+  serv-aplicacion-ejemplo:
+    image: idartestecnologia/phpoci8:72
+    container_name: serv-aplicacion-ejemplo
+    restart: always    
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "800:80"
+      - "4430:443"
+    networks:
+      - red_ejemplo      
+    # depends_on indica que se cree primero la bd (servicio 1)
+    depends_on:
+      - serv-bd-ejemplo
+
+       
+# se confirman los volumenes
+volumes:
+  MariaDB:
+networks:
+  red_ejemplo:
+    name: red_ejemplo
+
