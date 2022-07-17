@@ -1,3 +1,9 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,18 +20,19 @@
             <h5>Ingrese los datos Index New</h5>
         </div>
         <div class="card-body">            
-            <form class="row"  method="POST" action="../src/controller/Controlador.php">
+            <form class="row"  method="POST" id="form-calculadora" action="../src/controller/Controlador.php">
+                <input type="hidden" name="id" id="id">
                 <div class="mb-3 col-6">
                     <label for="numeroA" class="form-label">Numero A</label>
-                    <input type="number" name="numeroA" class="form-control">
+                    <input type="number" name="numeroA" id="numeroA" class="form-control" >
                 </div>
                 <div class="mb-3 col-6">
                     <label for="numeroB" class="form-label">Numero B</label>
-                    <input type="number" name="numeroB" class="form-control">
+                    <input type="number" name="numeroB"  id="numeroB" class="form-control" >
                 </div>  
                 <div class="mb-3 col-6"> 
                     <label for="operacion" class="form-label">Operacion</label>
-                    <select name="operacion" class="form-control">
+                    <select name="operacion" class="form-control" id="operacion">
                         <option value="1">Suma</option>
                         <option value="2">Resta</option>
                         <option value="3">Multiplicacion</option>
@@ -58,5 +65,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="js/calculadora.js"></script>
     <script src="js/consulta.js"></script>
+    <script src="js/editar.js"></script>
 </body>
 </html>

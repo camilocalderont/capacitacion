@@ -13,6 +13,7 @@ function refrescarTabla(){
         // procesar la respuesta
         if (requestTabla.status == 200) {
             document.getElementById("div_contenedorTabla").innerHTML = requestTabla.responseText;
+            activarBotonesEditar();
             // perfect!
         } else {
             // hubo algún problema con la petición,

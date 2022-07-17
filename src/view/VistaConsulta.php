@@ -17,6 +17,7 @@ class VistaConsulta{
                         <td><strong>NumeroB</strong></td>
                         <td><strong>Operacion</strong></td>
                         <td><strong>Resultado</strong></td>
+                        <td><strong>Acciones</strong></td>
                     </tr>
                 </thead>
                 <tbody>';
@@ -28,6 +29,10 @@ class VistaConsulta{
                 <td>'.$calculo['numeroB'].'</td>
                 <td>'.$this->operaciones[$calculo['operacion']].'</td>
                 <td>'.number_format($calculo['resultado'],2,",",".").'</td>
+                <td>
+                    <button type="button" class="btn btn-info editar-calculo" data-id="'.$calculo['id'].'" >Editar</button>
+                    <button type="button" class="btn btn-danger eliminar-calculo" data-id="'.$calculo['id'].'" >Eliminar</button>
+                </td>
             </tr>
             ';
         }

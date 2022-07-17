@@ -7,7 +7,8 @@ require('../model/Calculadora.php');
 require('../model/CalculadoraRepository.php');
 require('../view/Vista.php');
 
-$calc = new Calculadora($_POST['numeroA'],$_POST['numeroB'],$_POST['operacion']);
+$id = isset($_POST['id']) ? $_POST['id'] : null;
+$calc = new Calculadora($id,$_POST['numeroA'],$_POST['numeroB'],$_POST['operacion']);
 $calcRepo = new CalculadoraRepository();
 $guardoBD = $calcRepo->guardar($calc);
 //$guardoBD = true;
