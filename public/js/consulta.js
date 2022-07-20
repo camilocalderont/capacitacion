@@ -14,6 +14,7 @@ function refrescarTabla(){
         if (requestTabla.status == 200) {
             document.getElementById("div_contenedorTabla").innerHTML = requestTabla.responseText;
             activarBotonesEditar();
+            activarBotonesEliminar();
             // perfect!
         } else {
             // hubo algún problema con la petición,

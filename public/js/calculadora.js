@@ -1,3 +1,16 @@
+//swal notificacion tipo toast
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+
 //Creo un Escuchador para el evento click del boton
 document.getElementById("boton_ajax").addEventListener("click", llamadoAjax);
 
@@ -16,9 +29,13 @@ function llamadoAjax() {
     http_request.onreadystatechange = function(){
         // procesar la respuesta
         if (http_request.status == 200) {
-            document.getElementById("div_respuesta").innerHTML = http_request.responseText;
+            //document.getElementById("div_respuesta").innerHTML = http_request.responseText;
+            Toast.fire({
+                icon: 'success',
+                title: http_request.responseText
+            });          
             refrescarTabla();
-            // perfect!
+            limpiarFormulario('form-calculadora');
         } else {
             // hubo algún problema con la petición,
             // por ejemplo código de respuesta 404 (Archivo no encontrado)
@@ -36,8 +53,11 @@ function llamadoAjax() {
     //console.log(data2);
     //crear la peticion
     http_request.open('POST', 'http://localhost:800/src/controller/Controlador.php', true);
-    http_request.send(data);
-
-
-    
+    http_request.send(data);  
 }
+
+function limpiarFormulario($id)
+{
+    document.getElementById($id).reset();
+}
+

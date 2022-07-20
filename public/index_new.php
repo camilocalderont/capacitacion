@@ -39,11 +39,7 @@ error_reporting(E_ALL);
                         <option value="4">Division</option>
                     </select>
                 </div>   
-                <div class="mb-3 col-3">  
-                    <label for="btn" class="form-label"></label>         
-                    <button type="submit" class="btn btn-primary form-control">Guardar</button>
-                </div>
-                <div class="mb-3 col-3">
+                <div class="mb-6 col-6">
                     <label for="btn" class="form-label"></label> 
                     <button type="button" id="boton_ajax" class="btn btn-info form-control">Guardar Ajax</button>
                 </div>
@@ -63,8 +59,10 @@ error_reporting(E_ALL);
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/calculadora.js"></script>
     <script src="js/consulta.js"></script>
     <script src="js/editar.js"></script>
+    <script src="js/eliminar.js"></script>
 </body>
 </html>

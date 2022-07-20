@@ -44,7 +44,12 @@ class CalculadoraRepository{
     {
         $guardo = false;
         try{
-            $sql = "UPDATE capacitacion.calculadora SET numeroA :numeroA,numeroB = :numeroB,operacion :operacion,resultado :resultado WHERE id = :id";
+            $sql = "UPDATE capacitacion.calculadora SET 
+                    numeroA = :numeroA, 
+                    numeroB = :numeroB, 
+                    operacion = :operacion,
+                    resultado = :resultado 
+                    WHERE id = :id";
             $sentencia = $this->bd->prepare($sql);
             $sentencia->bindParam(':numeroA', $calc->numeroA);
             $sentencia->bindParam(':numeroB', $calc->numeroB);
@@ -90,6 +95,23 @@ class CalculadoraRepository{
         }catch(Exception $e){
             echo '<pre>'.print_r($e,true) .'</pre>';
             return  $resultados; 
+            //die();            
+        }        
+    } 
+    
+    function eliminar($id)
+    {
+        $guardo = false;
+        try{
+            $sql = "DELETE FROM capacitacion.calculadora WHERE id = :id";
+            $sentencia = $this->bd->prepare($sql);  
+            $sentencia->bindParam(':id', $id);
+            $sentencia->execute();   
+            $guardo =  $sentencia->rowCount();
+            return $guardo;  
+        }catch(Exception $e){
+            echo '<pre>'.print_r($e,true) .'</pre>';
+            return $guardo;
             //die();            
         }        
     }    
