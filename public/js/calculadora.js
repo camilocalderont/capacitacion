@@ -26,24 +26,7 @@ function llamadoAjax() {
     //http_request.overrideMimeType('text/xml');
 
     //definir funcion de respuesta del servidor
-    http_request.onreadystatechange = function(){
-        // procesar la respuesta
-        if (http_request.status == 200) {
-            //document.getElementById("div_respuesta").innerHTML = http_request.responseText;
-            Toast.fire({
-                icon: 'success',
-                title: http_request.responseText
-            });          
-            refrescarTabla();
-            limpiarFormulario('form-calculadora');
-        } else {
-            // hubo algún problema con la petición,
-            // por ejemplo código de respuesta 404 (Archivo no encontrado)
-            // o 500 (Internal Server Error)
-            document.getElementById("div_respuesta").innerHTML = "Algo salio mal!";
-        }                        
-        
-    };
+    http_request.onreadystatechange = resultadoCrear;
 
     //enviar variables al servidor
     var form = document.querySelector('form');
@@ -59,5 +42,28 @@ function llamadoAjax() {
 function limpiarFormulario($id)
 {
     document.getElementById($id).reset();
+}
+
+function resultadoCrear(){
+    // procesar la respuesta
+    if(http_request.readyState == 4){
+        if (http_request.status == 200) {
+            datos = JSON.parse(http_request.responseText);
+            Toast.fire({
+                icon: datos.icon,
+                title: datos.title
+            });                    
+            refrescarTabla();
+            limpiarFormulario('form-calculadora');
+        } else if(http_request.status != 0) {
+            //datos = JSON.parse(http_request.responseText);
+            Toast.fire({
+                icon: 'error',
+                title: "error consultando el registro"
+            });             
+            
+        }                        
+    }
+    
 }
 

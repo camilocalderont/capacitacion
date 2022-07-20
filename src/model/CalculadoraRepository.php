@@ -34,7 +34,7 @@ class CalculadoraRepository{
             $guardo =  $sentencia->rowCount();
             return  $guardo;   
         }catch(Exception $e){
-            echo '<pre>'.print_r($e,true) .'</pre>';
+            //echo '<pre>'.print_r($e,true) .'</pre>';
             return  $guardo; 
             //die();            
         }
@@ -60,7 +60,7 @@ class CalculadoraRepository{
             $guardo =  $sentencia->rowCount();
             return  $guardo;   
         }catch(Exception $e){
-            echo '<pre>'.print_r($e,true) .'</pre>';
+            //echo '<pre>'.print_r($e,true) .'</pre>';
             return  $guardo; 
             //die();            
         }
@@ -76,7 +76,7 @@ class CalculadoraRepository{
             $resultados =  $sentencia->fetchAll(PDO::FETCH_ASSOC);;
             return  $resultados;   
         }catch(Exception $e){
-            echo '<pre>'.print_r($e,true) .'</pre>';
+            //echo '<pre>'.print_r($e,true) .'</pre>';
             return  $resultados; 
             //die();            
         }        
@@ -93,7 +93,7 @@ class CalculadoraRepository{
             $resultados =  $sentencia->fetch(PDO::FETCH_ASSOC);
             return  $resultados;   
         }catch(Exception $e){
-            echo '<pre>'.print_r($e,true) .'</pre>';
+            //echo '<pre>'.print_r($e,true) .'</pre>';
             return  $resultados; 
             //die();            
         }        
@@ -110,7 +110,7 @@ class CalculadoraRepository{
             $guardo =  $sentencia->rowCount();
             return $guardo;  
         }catch(Exception $e){
-            echo '<pre>'.print_r($e,true) .'</pre>';
+            //echo '<pre>'.print_r($e,true) .'</pre>';
             return $guardo;
             //die();            
         }        
